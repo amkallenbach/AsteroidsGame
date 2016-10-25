@@ -1,4 +1,5 @@
 //your variable declarations here
+SpaceShip gelato = new SpaceShip();
 public void setup() 
 {
   size(700,700);
@@ -9,7 +10,8 @@ public void setup()
 }
 public void draw() 
 {
-  //your code here
+  gelato.show();
+  gelato.move();
 }
 class SpaceShip extends Floater  
 {   
@@ -33,23 +35,16 @@ class SpaceShip extends Floater
       xCorners[6] = 8;
       yCorners[6] = 0;
     }
-    public void setX(int x)
-    {
-      myCenterX = x;
-    }
-    public int getX();   
-    public void setY(int y)
-    {
-      myCenterY = y;
-    }   
-    public int getY();   
-    public void setDirectionX(double x);
-       
-    public double getDirectionX();   
-    public void setDirectionY(double y);   
-    public double getDirectionY();   
-    public void setPointDirection(int degrees);   
-    public double getPointDirection(); 
+    public void setX(int x){myCenterX = x;}
+    public int getX(){return (int)myCenterX;}   
+    public void setY(int y){myCenterY = y;}   
+    public int getY(){return (int)myCenterY;}   
+    public void setDirectionX(double x) {myDirectionX = x;}
+    public double getDirectionX(){return (double)myDirectionX;}   
+    public void setDirectionY(double y) {myDirectionY= y;}
+    public double getDirectionY() {return (double)myDirectionY;}
+    public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+    public double getPointDirection(){return (int)myPointDirection;} 
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
