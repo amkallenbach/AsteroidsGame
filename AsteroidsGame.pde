@@ -1,4 +1,4 @@
-//your variable declarations here
+  //your variable declarations here
 SpaceShip gelato = new SpaceShip();
 public void setup() 
 {
@@ -10,8 +10,36 @@ public void setup()
 }
 public void draw() 
 {
+  size(700,700);
+  background(195,199,203);
+  noStroke();
+  fill(85,170,170);
+  rect(0,0,770,660);
   gelato.show();
   gelato.move();
+}
+public void keyPressed()
+{
+  if (key == CODED)
+  {
+    if (keyCode == UP)
+    {
+      gelato.accelerate(2);
+    }
+    if (keyCode == DOWN)
+    {
+      gelato.accelerate(-2);
+    }
+    if (keyCode == LEFT)
+    {
+      gelato.rotate(-15);
+    }
+    if (keyCode == RIGHT)
+    {
+      gelato.rotate(15);
+    }
+  }
+  
 }
 class SpaceShip extends Floater  
 {   
@@ -34,6 +62,12 @@ class SpaceShip extends Floater
       yCorners[5] = -8;
       xCorners[6] = 8;
       yCorners[6] = 0;
+      myColor = 255;
+      myCenterX = 350;
+      myCenterY = 350;
+      myDirectionX = 0;
+      myDirectionY = 0;
+      myPointDirection = 270;
     }
     public void setX(int x){myCenterX = x;}
     public int getX(){return (int)myCenterX;}   
