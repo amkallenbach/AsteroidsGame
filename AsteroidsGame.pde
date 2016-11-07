@@ -3,18 +3,12 @@ SpaceShip gelato = new SpaceShip();
 public void setup() 
 {
   size(700,700);
-  background(195,199,203);
-  noStroke();
-  fill(85,170,170);
-  rect(0,0,770,660);
+  background(0,0,0);
 }
 public void draw() 
 {
   size(700,700);
-  background(195,199,203);
-  noStroke();
-  fill(85,170,170);
-  rect(0,0,770,660);
+  background(0,0,0);
   gelato.show();
   gelato.move();
 }
@@ -24,11 +18,11 @@ public void keyPressed()
   {
     if (keyCode == UP)
     {
-      gelato.accelerate(2);
+      gelato.accelerate(0.5);
     }
     if (keyCode == DOWN)
     {
-      gelato.accelerate(-2);
+      gelato.accelerate(-0.5);
     }
     if (keyCode == LEFT)
     {
@@ -38,6 +32,11 @@ public void keyPressed()
     {
       gelato.rotate(15);
     }
+  }
+  if (key == ' ')
+  {
+    gelato.setX((int)(Math.random()*700));
+    gelato.setY((int)(Math.random()*700));
   }
   
 }
