@@ -1,9 +1,16 @@
   //your variable declarations here
 SpaceShip gelato = new SpaceShip();
+Stars [] galaxy;
+
 public void setup() 
 {
   size(700,700);
   background(0,0,0);
+  galaxy = new Stars [150];
+    for (int i = 0; i < galaxy.length; i++)
+    {
+      galaxy[i] = new Stars();
+    }
 }
 public void draw() 
 {
@@ -11,7 +18,14 @@ public void draw()
   background(0,0,0);
   gelato.show();
   gelato.move();
+
+
+  for (int i = 0; i < galaxy.length; i++)
+  {
+    galaxy[i].show();
+  }
 }
+
 public void keyPressed()
 {
   if (key == CODED)
@@ -39,6 +53,23 @@ public void keyPressed()
     gelato.setY((int)(Math.random()*700));
   }
   
+}
+class Stars
+{
+  private int myX, myY, mySize;
+
+  Stars()
+  {
+    myX = (int)(Math.random()*width);
+    myY = (int)(Math.random()*height);
+    mySize = (int)(Math.random()*6+3);
+  }
+  public void show()
+  {
+    fill(92,209,110);
+    noStroke();
+    rect(myX, myY, mySize, mySize);
+  }
 }
 class SpaceShip extends Floater  
 {   
