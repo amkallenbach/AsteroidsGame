@@ -54,6 +54,53 @@ public void keyPressed()
   }
   
 }
+
+class Asteroids extends Floater
+{
+  private int rotateSpeed;
+
+  Asteroids()
+  {
+      corners = 7;
+      xCorners = new int[corners];
+      yCorners = new int[corners];
+      xCorners[0] = -6;
+      yCorners[0] = 8;
+      xCorners[1] = -4;
+      yCorners[1] = 2;
+      xCorners[2] = -8;
+      yCorners[2] = 2;
+      xCorners[3] = -8;
+      yCorners[3] = -2;
+      xCorners[4] = -4;
+      yCorners[4] = -2;
+      xCorners[5] = -6;
+      yCorners[5] = -8;
+      xCorners[6] = 8;
+      yCorners[6] = 0;
+      myColor = 255;
+      myCenterX = 350;
+      myCenterY = 350;
+      myDirectionX = 0;
+      myDirectionY = 0;
+      myPointDirection = 270;
+
+      if (Math.random() > 0.5)
+        rotateSpeed = (int)(Math.random()*5+1);
+      else
+        rotateSpeed = (int)(Math.random()*5-5);
+  }
+    public void setX(int x){myCenterX = x;}
+    public int getX(){return (int)myCenterX;}   
+    public void setY(int y){myCenterY = y;}   
+    public int getY(){return (int)myCenterY;}   
+    public void setDirectionX(double x) {myDirectionX = x;}
+    public double getDirectionX(){return (double)myDirectionX;}   
+    public void setDirectionY(double y) {myDirectionY= y;}
+    public double getDirectionY() {return (double)myDirectionY;}
+    public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+    public double getPointDirection(){return (int)myPointDirection;}
+}
 class Stars
 {
   private int myX, myY, mySize;
@@ -92,12 +139,12 @@ class SpaceShip extends Floater
       yCorners[5] = -8;
       xCorners[6] = 8;
       yCorners[6] = 0;
-      myColor = 255;
-      myCenterX = 350;
-      myCenterY = 350;
-      myDirectionX = 0;
-      myDirectionY = 0;
-      myPointDirection = 270;
+      myColor = 195;
+      myCenterX = (Math.random()*width);
+      myCenterY = (Math.random()*height);
+      myDirectionX = (Math.random()*5-2);
+      myDirectionY = (Math.random()*5-2);
+      myPointDirection = 0;
     }
     public void setX(int x){myCenterX = x;}
     public int getX(){return (int)myCenterX;}   
