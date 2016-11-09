@@ -1,6 +1,7 @@
   //your variable declarations here
 SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
+Asteroids [] asteroidsList;
 
 public void setup() 
 {
@@ -11,19 +12,27 @@ public void setup()
     {
       galaxy[i] = new Stars();
     }
+  asteroidsList = new Asteroids [21];
+    for (int i = 0; i< asteroidsList.length; i++)
+    {
+      asteroidsList[i] = new Asteroids();
+    }
 }
 public void draw() 
 {
-  size(700,700);
   background(0,0,0);
-  gelato.show();
-  gelato.move();
-
-
   for (int i = 0; i < galaxy.length; i++)
   {
     galaxy[i].show();
   }
+  for (int i = 0; i < asteroidsList.length; i++)
+  {
+    asteroidsList[i].show();
+    asteroidsList[i].move();
+  }
+  gelato.show();
+  gelato.move();
+
 }
 
 public void keyPressed()
@@ -65,9 +74,9 @@ class Asteroids extends Floater
       xCorners = new int[corners];
       yCorners = new int[corners];
       xCorners[0] = -6;
-      yCorners[0] = 8;
-      xCorners[1] = -4;
-      yCorners[1] = 2;
+      yCorners[0] = 6;
+      xCorners[1] = 4;
+      yCorners[1] = 8;
       xCorners[2] = -8;
       yCorners[2] = 2;
       xCorners[3] = -8;
@@ -78,11 +87,11 @@ class Asteroids extends Floater
       yCorners[5] = -8;
       xCorners[6] = 8;
       yCorners[6] = 0;
-      myColor = 255;
-      myCenterX = 350;
-      myCenterY = 350;
-      myDirectionX = 0;
-      myDirectionY = 0;
+      myColor = 195;
+      myCenterX = (Math.random()*width);
+      myCenterY = (Math.random()*height);
+      myDirectionX = (Math.random()*5-2);
+      myDirectionY = (Math.random()*5-2);
       myPointDirection = 270;
 
       if (Math.random() > 0.5)
@@ -90,6 +99,31 @@ class Asteroids extends Floater
       else
         rotateSpeed = (int)(Math.random()*5-5);
   }
+    public void move ()   //move the floater in the current direction of travel
+  {      
+    //change the x and y coordinates by myDirectionX and myDirectionY       
+    myCenterX += myDirectionX;    
+    myCenterY += myDirectionY;
+    rotate(rotateSpeed);     
+
+    //wrap around screen    
+    if(myCenterX >width)
+    {     
+      myCenterX = 0;    
+    }    
+    else if (myCenterX<0)
+    {     
+      myCenterX = width;    
+    }    
+    if(myCenterY >height)
+    {    
+      myCenterY = 0;    
+    }   
+    else if (myCenterY < 0)
+    {     
+      myCenterY = height;    
+    }   
+  }   
     public void setX(int x){myCenterX = x;}
     public int getX(){return (int)myCenterX;}   
     public void setY(int y){myCenterY = y;}   
@@ -139,11 +173,11 @@ class SpaceShip extends Floater
       yCorners[5] = -8;
       xCorners[6] = 8;
       yCorners[6] = 0;
-      myColor = 195;
-      myCenterX = (Math.random()*width);
-      myCenterY = (Math.random()*height);
-      myDirectionX = (Math.random()*5-2);
-      myDirectionY = (Math.random()*5-2);
+      myColor = 255;
+      myCenterX = 350;
+      myCenterY = 350;
+      myDirectionX = 0;
+      myDirectionY = 0;
       myPointDirection = 0;
     }
     public void setX(int x){myCenterX = x;}
