@@ -1,7 +1,7 @@
   //your variable declarations here
 SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
-Asteroids [] asteroidsList;
+ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
 
 public void setup() 
 {
@@ -12,10 +12,9 @@ public void setup()
     {
       galaxy[i] = new Stars();
     }
-  asteroidsList = new Asteroids [21];
-    for (int i = 0; i< asteroidsList.length; i++)
+    for (int i = 0; i< 21; i++)
     {
-      asteroidsList[i] = new Asteroids();
+      asteroidsList.add(new Asteroids());
     }
 }
 public void draw() 
@@ -25,10 +24,12 @@ public void draw()
   {
     galaxy[i].show();
   }
-  for (int i = 0; i < asteroidsList.length; i++)
+  for (int i = 0; i < asteroidsList.size(); i++)
   {
-    asteroidsList[i].show();
-    asteroidsList[i].move();
+    asteroidsList.get(i).show();
+    asteroidsList.get(i).move();
+    if (dist(gelato.getX(), gelato.getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY()) < 20)
+      asteroidsList.remove(i);
   }
   gelato.show();
   gelato.move();
