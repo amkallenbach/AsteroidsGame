@@ -3,7 +3,7 @@ SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
 ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
 Bullet sorbet = new Bullet(gelato);
-ArrayList<Bullet>bullets = new ArrayList<Asteroids>();
+ArrayList<Bullet>bullets = new ArrayList<Bullet>();
 
 public void setup() 
 {
@@ -58,7 +58,7 @@ public void keyPressed()
       gelato.accelerate(-0.5);
     }
     if (keyCode == LEFT)
-    {
+    { 
       gelato.rotate(-15);
     }
     if (keyCode == RIGHT)
@@ -66,7 +66,7 @@ public void keyPressed()
       gelato.rotate(15);
     }
   }
-  if (key == ' ')
+  if (key == 'z')
   {
     gelato.setX((int)(Math.random()*700));
     gelato.setY((int)(Math.random()*700));
@@ -178,8 +178,8 @@ class Asteroids extends Floater
     public double getPointDirection(){return (int)myPointDirection;}
     public void show ()  //Draws the floater at the current position  
    {             
-    fill(myColor);   
-    stroke(myColor);    
+    fill(66,81,246);   
+    stroke(66,81,246);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
