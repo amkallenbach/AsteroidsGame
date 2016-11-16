@@ -2,6 +2,8 @@
 SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
 ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
+Bullet sorbet = new Bullet(gelato);
+ArrayList<Bullet>bullets = new ArrayList<Asteroids>();
 
 public void setup() 
 {
@@ -31,8 +33,15 @@ public void draw()
     if (dist(gelato.getX(), gelato.getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY()) < 20)
       asteroidsList.remove(i);
   }
+  for (int i = 0; i < bullets.size(); i++)
+  {
+    bullets.get(i).show();
+    bullets.get(i).move();
+  }
+
   gelato.show();
   gelato.move();
+
 
 }
 
@@ -61,8 +70,40 @@ public void keyPressed()
   {
     gelato.setX((int)(Math.random()*700));
     gelato.setY((int)(Math.random()*700));
+    gelato.setDirectionX(0);
+    gelato.setDirectionY(0);
   }
   
+}
+
+class Bullet extends Floater
+{
+  Bullet(SpaceShip theShip)
+    {
+      myCenterX = theShip.getX();
+      myCenterY = theShip.getY();
+      myPointDirection = theShip.getPointDirection();
+      double dRadians = myPointDirection*(Math.PI/180);
+      myDirectionX = 5 * Math.cos(dRadians) + theShip.getDirectionX();
+      myDirectionY = 5 * Math.sin(dRadians) + theShip.getDirectionY();
+    }
+    public void setX(int x){myCenterX = x;}
+    public int getX(){return (int)myCenterX;}   
+    public void setY(int y){myCenterY = y;}   
+    public int getY(){return (int)myCenterY;}   
+    public void setDirectionX(double x) {myDirectionX = x;}
+    public double getDirectionX(){return (double)myDirectionX;}   
+    public void setDirectionY(double y) {myDirectionY= y;}
+    public double getDirectionY() {return (double)myDirectionY;}
+    public void setPointDirection(int degrees) {myPointDirection = degrees;}   
+    public double getPointDirection(){return (int)myPointDirection;} 
+   
+    public void show ()  
+    {             
+      noStroke();
+      fill(208,62,179);
+      ellipse( (float)myCenterX, (float)myCenterY, 10,10);
+    }  
 }
 
 class Asteroids extends Floater
@@ -88,7 +129,7 @@ class Asteroids extends Floater
       yCorners[5] = -8;
       xCorners[6] = 8;
       yCorners[6] = 0;
-      myColor = 195;
+      myColor = (110);
       myCenterX = (Math.random()*width);
       myCenterY = (Math.random()*height);
       myDirectionX = (Math.random()*5-2);
@@ -135,7 +176,25 @@ class Asteroids extends Floater
     public double getDirectionY() {return (double)myDirectionY;}
     public void setPointDirection(int degrees) {myPointDirection = degrees;}   
     public double getPointDirection(){return (int)myPointDirection;}
+    public void show ()  //Draws the floater at the current position  
+   {             
+    fill(myColor);   
+    stroke(myColor);    
+    //convert degrees to radians for sin and cos         
+    double dRadians = myPointDirection*(Math.PI/180);                 
+    int xRotatedTranslated, yRotatedTranslated;    
+    beginShape();         
+    for(int nI = 0; nI < corners; nI++)    
+    {     
+      //rotate and translate the coordinates of the floater using current direction 
+      xRotatedTranslated = (int)((xCorners[nI]* Math.cos(dRadians)) - (yCorners[nI] * Math.sin(dRadians))+myCenterX);     
+      yRotatedTranslated = (int)((xCorners[nI]* Math.sin(dRadians)) + (yCorners[nI] * Math.cos(dRadians))+myCenterY);      
+      vertex(xRotatedTranslated,yRotatedTranslated);    
+    }   
+    endShape(CLOSE);  
+  } 
 }
+
 class Stars
 {
   private int myX, myY, mySize;
@@ -153,6 +212,7 @@ class Stars
     rect(myX, myY, mySize, mySize);
   }
 }
+
 class SpaceShip extends Floater  
 {   
     SpaceShip()
