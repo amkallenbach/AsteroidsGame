@@ -178,7 +178,8 @@ class Asteroids extends Floater
     public double getPointDirection(){return (int)myPointDirection;}
     public void show ()  //Draws the floater at the current position  
    {             
-    fill(66,81,246);   
+    fill(66,81,246
+       );   
     stroke(66,81,246);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
