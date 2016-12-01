@@ -14,7 +14,7 @@ public void setup()
     {
       galaxy[i] = new Stars();
     }
-    for (int i = 0; i< 21; i++)
+    for (int i = 0; i< 13; i++)
     {
       asteroidsList.add(new Asteroids());
     }
@@ -38,7 +38,7 @@ public void draw()
     for (int j = 0; j < bullets.size(); j++)
     {
       float distance = dist(bullets.get(j).getX(), bullets.get(j).getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY());
-      if (distance < 20)
+      if (distance < 25)
       {
         asteroidsList.remove(i);
         bullets.remove(j);
@@ -103,23 +103,25 @@ class Asteroids extends Floater
 
   Asteroids()
   {
-      corners = 7;
+      corners = 8;
       xCorners = new int[corners];
       yCorners = new int[corners];
-      xCorners[0] = -6;
-      yCorners[0] = 6;
-      xCorners[1] = 4;
-      yCorners[1] = 8;
-      xCorners[2] = -8;
-      yCorners[2] = 2;
-      xCorners[3] = -8;
-      yCorners[3] = -2;
-      xCorners[4] = -4;
-      yCorners[4] = -2;
-      xCorners[5] = -6;
-      yCorners[5] = -8;
-      xCorners[6] = 8;
-      yCorners[6] = 0;
+      xCorners[0] = -22;
+      yCorners[0] = 10;
+      xCorners[1] = -16;
+      yCorners[1] = 20;
+      xCorners[2] = -6;
+      yCorners[2] = 16;
+      xCorners[3] = 8;
+      yCorners[3] = 20;
+      xCorners[4] = 26;
+      yCorners[4] = 2;
+      xCorners[5] = 8;
+      yCorners[5] = -6;
+      xCorners[6] = 10;
+      yCorners[6] = -20;
+      xCorners[7] = -14;
+      yCorners[7] = -14;
       myColor = (110);
       myCenterX = (Math.random()*width);
       myCenterY = (Math.random()*height);
