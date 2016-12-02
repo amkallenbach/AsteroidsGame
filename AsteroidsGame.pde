@@ -2,13 +2,14 @@
 SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
 ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
+ArrayList<Asteroids2>asteroidsList2 = new ArrayList<Asteroids2>();
 Bullet sorbet = new Bullet(gelato);
 ArrayList<Bullet>bullets = new ArrayList<Bullet>();
 
 public void setup() 
 {
   size(700,700);
-  background(0,0,0);
+  background(25,25,171);
   galaxy = new Stars [150];
     for (int i = 0; i < galaxy.length; i++)
     {
@@ -18,10 +19,11 @@ public void setup()
     {
       asteroidsList.add(new Asteroids());
     }
-}
+  }
+
 public void draw() 
 {
-  background(0,0,0);
+  background(25,25,171);
   for (int i = 0; i < galaxy.length; i++)
   {
     galaxy[i].show();
@@ -40,6 +42,8 @@ public void draw()
       float distance = dist(bullets.get(j).getX(), bullets.get(j).getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY());
       if (distance < 25)
       {
+        asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
+        asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
         asteroidsList.remove(i);
         bullets.remove(j);
         break;
@@ -59,7 +63,11 @@ public void draw()
   gelato.show();
   gelato.move();
 
-
+  for (Asteroids2 toe : asteroidsList2)
+  {
+    toe.show();
+    toe.move();
+  }
 }
 
 public void keyPressed()
@@ -170,10 +178,10 @@ class Asteroids extends Floater
     public void setPointDirection(int degrees) {myPointDirection = degrees;}   
     public double getPointDirection(){return (int)myPointDirection;}
     public void show ()  //Draws the floater at the current position  
-   {             
-    fill(66,81,246
-       );   
-    stroke(66,81,246);    
+   { 
+    noFill();
+    strokeWeight(5);             
+    stroke(255);    
     //convert degrees to radians for sin and cos         
     double dRadians = myPointDirection*(Math.PI/180);                 
     int xRotatedTranslated, yRotatedTranslated;    
@@ -189,6 +197,44 @@ class Asteroids extends Floater
   } 
 }
 
+class Asteroids2 extends Asteroids
+{
+  private int rotateSpeed;
+
+    Asteroids2(Asteroids popsicle)
+    {
+    corners = 8;
+      xCorners = new int[corners];
+      yCorners = new int[corners];
+      xCorners[0] = -11;
+      yCorners[0] = 5;
+      xCorners[1] = -8;
+      yCorners[1] = 10;
+      xCorners[2] = -3;
+      yCorners[2] = 8;
+      xCorners[3] = 4;
+      yCorners[3] = 10;
+      xCorners[4] = 13;
+      yCorners[4] = 1;
+      xCorners[5] = 4;
+      yCorners[5] = -3;
+      xCorners[6] = 5;
+      yCorners[6] = -10;
+      xCorners[7] = -7;
+      yCorners[7] = -7;
+      myColor = (110);
+      myCenterX = popsicle.getX();
+      myCenterY = popsicle.getY();
+      myDirectionX = (Math.random()*5-2);
+      myDirectionY = (Math.random()*5-2);
+      myPointDirection = 270;
+
+      if (Math.random() > 0.5)
+        rotateSpeed = (int)(Math.random()*5+1);
+      else
+        rotateSpeed = (int)(Math.random()*5-5);
+    }
+}
 class Stars
 {
   private int myX, myY, mySize;
@@ -201,7 +247,7 @@ class Stars
   }
   public void show()
   {
-    fill(92,209,110);
+    fill(255);
     noStroke();
     rect(myX, myY, mySize, mySize);
   }
