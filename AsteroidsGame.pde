@@ -35,19 +35,30 @@ public void draw()
     // if (dist(gelato.getX(), gelato.getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY()) < 20)
     //   asteroidsList.remove(i);
   }
-    for (int i = 0; i < asteroidsList.size(); i++)
-  {
-    for (int j = 0; j < bullets.size(); j++)
-    {
-      float distance = dist(bullets.get(j).getX(), bullets.get(j).getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY());
-      if (distance < 25)
+        for (int i = 0; i < asteroidsList.size(); i++)
       {
-        asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
-        asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
-        asteroidsList.remove(i);
-        bullets.remove(j);
-        break;
+        for (int j = 0; j < bullets.size(); j++)
+        {
+          float distance = dist(bullets.get(j).getX(), bullets.get(j).getY(), asteroidsList.get(i).getX(), asteroidsList.get(i).getY());
+          if (distance < 25)
+          {
+            asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
+            asteroidsList2.add(new Asteroids2(asteroidsList.get(i)));
+            asteroidsList.remove(i);
+            bullets.remove(j);
+            break;
+          }
+        }
       }
+  for (int i = 0; i <asteroidsList2.size(); i++)
+  {
+    for (int k = 0; k < bullets.size(); k++)
+    {
+      float distance = dist(bullets.get(k).getX(), bullets.get(k).getY(), asteroidsList2.get(i).getX(), asteroidsList2.get(i).getY());
+        if (distance < 15)
+        {
+          asteroidsList2.remove(k);
+        }
     }
   }
   for (int i = 0; i < bullets.size(); i++)
@@ -252,6 +263,37 @@ class Stars
     rect(myX, myY, mySize, mySize);
   }
 }
+// class Lives
+// {
+//   private int myX, myY;
+
+//   Lives()
+//   {
+//     myX = (650);
+//     myY = ()
+//   }
+//   public void show()
+//   {
+//      corners = 7;
+//       xCorners = new int[corners];
+//       yCorners = new int[corners];
+//       xCorners[0] = -9;
+//       yCorners[0] = 12;
+//       xCorners[1] = -6;
+//       yCorners[1] = 3;
+//       xCorners[2] = -12;
+//       yCorners[2] = 3;
+//       xCorners[3] = -12;
+//       yCorners[3] = -3;
+//       xCorners[4] = -6;
+//       yCorners[4] = -3;
+//       xCorners[5] = -9;
+//       yCorners[5] = -12;
+//       xCorners[6] = 12;
+//       yCorners[6] = 0;
+//   }
+
+// }
 
 class SpaceShip extends Floater  
 {   

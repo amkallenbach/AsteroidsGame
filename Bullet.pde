@@ -22,9 +22,8 @@ class Bullet extends Floater
    
     public void show ()  
     {             
-      stroke(232,81,54);
-      strokeWeight(2);
-      noFill();
+      fill(232,81,54);
+      noStroke();
       ellipse( (float)myCenterX, (float)myCenterY, 10,10);
     }  
 }
