@@ -57,7 +57,8 @@ public void draw()
       float distance = dist(bullets.get(k).getX(), bullets.get(k).getY(), asteroidsList2.get(i).getX(), asteroidsList2.get(i).getY());
         if (distance < 15)
         {
-          asteroidsList2.remove(k);
+          asteroidsList2.remove(i);
+          break;
         }
     }
   }
@@ -68,6 +69,7 @@ public void draw()
     if (bullets.get(i).getX() <= 0 || bullets.get(i).getX() >= width || bullets.get(i).getY() <= 0 || bullets.get(i).getY() >= height)
     {
       bullets.remove(i);
+      break;
     }
   }
 
