@@ -1,6 +1,9 @@
   //your variable declarations here
 SpaceShip gelato = new SpaceShip();
 Stars [] galaxy;
+Lives chance1;
+Lives chance2;
+Lives chance3;
 ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
 ArrayList<Asteroids2>asteroidsList2 = new ArrayList<Asteroids2>();
 Bullet sorbet = new Bullet(gelato);
@@ -19,6 +22,9 @@ public void setup()
     {
       asteroidsList.add(new Asteroids());
     }
+    chance1 = new Lives(520,600);
+    chance2 = new Lives(600,600);
+    chance3 = new Lives(440,600);
   }
 
 public void draw() 
@@ -81,6 +87,9 @@ public void draw()
     toe.show();
     toe.move();
   }
+  chance1.show();
+  chance2.show();
+  chance3.show();
 }
 
 public void keyPressed()
@@ -265,37 +274,24 @@ class Stars
     rect(myX, myY, mySize, mySize);
   }
 }
-// class Lives
-// {
-//   private int myX, myY;
+class Lives
+{
+  private int myX, myY;
 
-//   Lives()
-//   {
-//     myX = (650);
-//     myY = ()
-//   }
-//   public void show()
-//   {
-//      corners = 7;
-//       xCorners = new int[corners];
-//       yCorners = new int[corners];
-//       xCorners[0] = -9;
-//       yCorners[0] = 12;
-//       xCorners[1] = -6;
-//       yCorners[1] = 3;
-//       xCorners[2] = -12;
-//       yCorners[2] = 3;
-//       xCorners[3] = -12;
-//       yCorners[3] = -3;
-//       xCorners[4] = -6;
-//       yCorners[4] = -3;
-//       xCorners[5] = -9;
-//       yCorners[5] = -12;
-//       xCorners[6] = 12;
-//       yCorners[6] = 0;
-//   }
+  Lives(int x, int y)
+  {
+    myX = x;
+    myY = y;
+  }
+  public void show()
+  {
+    rect(myX, myY, 50, 50, 5);
+    stroke(255);
+    strokeWeight(7);
+    fill(87,193,16);
+  }
 
-// }
+}
 
 class SpaceShip extends Floater  
 {   
