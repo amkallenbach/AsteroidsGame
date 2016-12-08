@@ -25,6 +25,7 @@ public void setup()
     // chance1 = new Lives(520,600);
     // chance2 = new Lives(600,600);
     // chance3 = new Lives(440,600);
+    //a
   }
 
 public void draw() 
