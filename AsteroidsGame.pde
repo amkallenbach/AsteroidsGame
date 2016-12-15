@@ -4,10 +4,10 @@ Stars [] galaxy;
 // Lives chance1;
 // Lives chance2;
 // Lives chance3;
-ArrayList<Asteroids>asteroidsList = new ArrayList<Asteroids>();
-ArrayList<Asteroids2>asteroidsList2 = new ArrayList<Asteroids2>();
+ArrayList <Asteroids> asteroidsList = new ArrayList<Asteroids>();
+ArrayList <Asteroids2> asteroidsList2 = new ArrayList<Asteroids2>();
 Bullet sorbet = new Bullet(gelato);
-ArrayList<Bullet>bullets = new ArrayList<Bullet>();
+ArrayList <Bullet> bullets = new ArrayList<Bullet>();
 
 public void setup() 
 {
